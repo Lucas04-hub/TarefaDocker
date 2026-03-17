@@ -1,0 +1,17 @@
+
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    command: 
+      [ "poetry", "run", "uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000" ]
+    environment:
+      - MEU_USUARIO=${MEU_USUARIO}
+      - MINHA_SENHA=${MINHA_SENHA}
+      - DATABASE_URL=${DATABASE_URL}
+    
